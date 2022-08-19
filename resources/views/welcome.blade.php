@@ -29,9 +29,9 @@
         crossorigin="anonymous"></script>
 
     <style>
-        body {
+        /* body {
             font-family: 'Times New Roman', Times, serif;
-        }
+        } */
 
         body,
         html {
@@ -81,14 +81,13 @@
             <div class="col-xl-4">
                 <img src="/main-image/logo fgv.png">
             </div>
-            <div class="col-xl-5 text-center">
+            <div class="col-xl-6 text-center">
                 <ul class="nav nav-tabs justify-content-center">
                     <li class="nav-item">
-                        <button id="btn1" class="nav-link active selected fw-bold"> Seed
-                            Garden</button>
+                        <button id="btn1" class="nav-link active selected fw-bold">Ladang Benih</button>
                     </li>
                     <li class="nav-item">
-                        <button id="btn2" class="nav-link active fw-bold">Laboratory</button>
+                        <button id="btn2" class="nav-link active fw-bold">Makmal Benih</button>
                     </li>
                 </ul>
 

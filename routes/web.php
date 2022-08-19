@@ -29,7 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/pengurusan_pengguna')->group(function () {
         Route::get('/petugas', [PengurusanPenggunaController::class, 'index'])->name('pp.petugas');
         Route::get('/daftar', [PengurusanPenggunaController::class, 'daftar'])->name('pp.daftar');
-        Route::get('/edit', [PengurusanPenggunaController::class, 'edit'])->name('pp.edit');
+        Route::post('/daftar', [PengurusanPenggunaController::class, 'store']);
+        Route::get('/edit/{user}', [PengurusanPenggunaController::class, 'edit'])->name('pp.edit');
 
         Route::get('/laporan', [PengurusanPenggunaController::class, 'laporan'])->name('pp.laporan');
         Route::get('/maklumat', [PengurusanPenggunaController::class, 'maklumat'])->name('pp.maklumat');

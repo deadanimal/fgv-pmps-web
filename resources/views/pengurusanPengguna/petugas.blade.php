@@ -66,7 +66,7 @@
                                                 <button class=" btn btn-sm btn-danger">
                                                     <span data-feather="trash-2" style="width:15px;"></span>
                                                 </button>
-                                                <a href="{{ route('pp.edit') }}" class="ms-2 btn btn-sm btn-danger">
+                                                <a href="/pengurusan_pengguna/edit/{{$p->id}}" class="ms-2 btn btn-sm btn-danger">
                                                     <span data-feather="edit" style="width:15px;"></span>
                                                 </a>
                                             </td>

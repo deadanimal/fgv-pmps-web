@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-xl-8">
                                 <input type="text" name="nama" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                    value="{{ $p->name }}">
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-xl-8">
                                 <input type="text" name="no_kakitangan" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                    value="{{ $p->no_kakitangan }}">
                             </div>
                         </div>
                     </div>
@@ -41,8 +41,8 @@
                                 <label class="col-form-label text-main">No. Kad Pengenalan</label>
                             </div>
                             <div class="col-xl-8">
-                                <input type="text" name="kad_pengenalan" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                <input type="text" name="ic_pengguna" class="form-control border-danger"
+                                    value="{{ $p->ic_pengguna }}">
                             </div>
                         </div>
                     </div>
@@ -54,8 +54,8 @@
                                 <label class="col-form-label text-main">No. Telefon</label>
                             </div>
                             <div class="col-xl-8">
-                                <input type="text" name="no_telefon" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                <input type="text" name="tel_pengguna" class="form-control border-danger"
+                                    value="{{ $p->tel_pengguna }}">
                             </div>
                         </div>
                     </div>
@@ -66,8 +66,8 @@
                                 <label class="col-form-label text-main">E-mel</label>
                             </div>
                             <div class="col-xl-8">
-                                <input type="text" name="emel" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                <input type="text" name="email" class="form-control border-danger"
+                                    value="{{ $p->email }}">
                             </div>
                         </div>
                     </div>
@@ -79,8 +79,9 @@
                                 <label class="col-form-label text-main">Stesen</label>
                             </div>
                             <div class="col-xl-8">
-                                <select name="stesen" class="form-select border-danger" id="email">
-                                    <option selected disabled hidden> SILA PILIH </option>
+                                <select name="stesen" class="form-select border-danger">
+                                    <option selected disabled hidden value="{{ $p->stesen }}">{{ $p->stesen }}
+                                    </option>
                                     <option value="Pahang">Pahang</option>
                                     <option value="Sabah">Sabah</option>
                                     <option value="Johor">Johor</option>
@@ -96,7 +97,8 @@
                             </div>
                             <div class="col-xl-8">
                                 <select name="kategori_petugas" class="form-select border-danger" id="email">
-                                    <option selected disabled hidden> SILA PILIH </option>
+                                    <option selected disabled hidden value="{{ $p->kategori_petugas }}">
+                                        {{ $p->kategori_petugas }}</option>
                                     <option value="Petugas Am">Petugas Am</option>
                                     <option value="Pekerja Operasi Ladang">Pekerja Operasi Ladang</option>
                                     <option value="Tenaga Kerja Luar">Tenaga Kerja Luar</option>
@@ -112,11 +114,12 @@
                                 <label class="col-form-label text-main">Tugasan</label>
                             </div>
                             <div class="col-xl-8">
-                                <select name="tugasan" class="form-select border-danger" id="email">
-                                    <option selected disabled hidden> SILA PILIH </option>
-                                    <option value="Petugas Am">Petugas Am</option>
-                                    <option value="Pekerja Operasi Ladang">Pekerja Operasi Ladang</option>
-                                    <option value="Tenaga Kerja Luar">Tenaga Kerja Luar</option>
+                                <select name="peranan_pengguna" class="form-select border-danger" id="email">
+                                    <option selected disabled hidden value="{{ $p->peranan_pengguna }}">
+                                        {{ $p->peranan_pengguna }}</option>
+                                    @foreach ($peranan as $p)
+                                        <option value="{{ $p->name }}" class="others">{{ $p->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -129,7 +132,7 @@
                             </div>
                             <div class="col-xl-8">
                                 <input type="text" name="blok" class="form-control border-danger"
-                                    placeholder="SILA TAIP DISINI">
+                                    value="{{ $p->blok }}">
                             </div>
                         </div>
                     </div>
@@ -141,8 +144,9 @@
                                 <label class="col-form-label text-main">Jangka Hayat Laluan</label>
                             </div>
                             <div class="col-xl-8">
-                                <select name="tugasan" class="form-select border-danger" id="email">
-                                    <option selected disabled hidden> SILA PILIH </option>
+                                <select name="jangka_hayat_laluan" class="form-select border-danger" id="email">
+                                    <option selected disabled hidden value="{{ $p->jangka_hayat_laluan }}"> SILA PILIH
+                                    </option>
                                     <option value="90">90 Hari</option>
                                     <option value="180">180 Hari</option>
                                     <option value="270">270 Hari</option>
