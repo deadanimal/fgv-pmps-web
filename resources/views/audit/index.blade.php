@@ -73,26 +73,26 @@
                                         </tr>
                                     </thead>
                                     <tbody class="list">
-                                        @for ($i = 0; $i < 50; $i++)
+                                        @foreach ($audit as $a)
                                             <tr style="border-bottom:#fff">
                                                 <td class="bil">
-                                                    {{ $i }}
+                                                    {{ $loop->iteration }}
                                                 </td>
                                                 <td class="kakitangan">
-                                                    312213213
+                                                    {{ $a->pengguna->no_kakitangan }}
                                                 </td>
                                                 <td class="tindakan">
-                                                    abda
+                                                    {{ $a->tindakan }}
                                                 </td>
                                                 <td class="keterangan">
-                                                    sadas
+                                                    {{ $a->deskripsi }}
                                                 </td>
                                                 <td class="tarikhTindakan">
-                                                    22/10/2021
+                                                    {{ date('d/m/Y', strtotime($a->created_at)) }}
                                                 </td>
 
                                             </tr>
-                                        @endfor
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

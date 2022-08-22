@@ -45,6 +45,7 @@ class PengurusanPenggunaController extends Controller
         $pengguna->save();
         $pengguna->syncRoles([$request->peranan_pengguna]);
 
+        AuditController::audit('create', 'pengguna', $pengguna->id);
         return redirect('/pengurusan_pengguna/petugas');
     }
 
@@ -76,6 +77,8 @@ class PengurusanPenggunaController extends Controller
         $pengguna->save();
         $pengguna->syncRoles($request->peranan_pengguna);
 
+        AuditController::audit('update', 'pengguna', $id);
+
         return redirect('/pengurusan_pengguna/petugas');
     }
 
@@ -83,6 +86,7 @@ class PengurusanPenggunaController extends Controller
     {
         $pengguna = User::find($id);
         $pengguna->delete();
+        AuditController::audit('create', 'pengguna', $id);
         return redirect('/pengurusan_pengguna/petugas');
     }
 
