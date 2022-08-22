@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/daftar', [PengurusanPenggunaController::class, 'daftar'])->name('pp.daftar');
         Route::post('/daftar', [PengurusanPenggunaController::class, 'store']);
         Route::get('/edit/{user}', [PengurusanPenggunaController::class, 'edit'])->name('pp.edit');
+        Route::put('/kemaskini/{id}', [PengurusanPenggunaController::class, 'update']);
+        Route::delete('/hapus/{id}', [PengurusanPenggunaController::class, 'destroy']);
+        Route::get('/filter', [PengurusanPenggunaController::class, 'filter']);
 
         Route::get('/laporan', [PengurusanPenggunaController::class, 'laporan'])->name('pp.laporan');
         Route::get('/maklumat', [PengurusanPenggunaController::class, 'maklumat'])->name('pp.maklumat');

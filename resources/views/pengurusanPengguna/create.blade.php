@@ -8,7 +8,7 @@
     <x-header main="Pengurusan Pengguna" sub="Petugas" sub2="Daftar Petugas" />
 
     <div class="container">
-        <form action="/pengurusan/daftar" method="post" id="form1">
+        <form action="/pengurusan_pengguna/daftar" method="post" id="form1">
             @csrf
             <div class="row justify-content-center mt-4">
                 <div class="col-10 px-0">
@@ -86,7 +86,7 @@
                                     <label class="col-form-label text-main">Stesen</label>
                                 </div>
                                 <div class="col-xl-8">
-                                    <select name="stesen" class="form-select border-danger" id="email">
+                                    <select name="lokaliti" class="form-select border-danger" id="email">
                                         <option selected disabled hidden> SILA PILIH </option>
                                         <option value="Pahang">Pahang</option>
                                         <option value="Sabah">Sabah</option>
