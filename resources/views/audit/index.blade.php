@@ -6,55 +6,57 @@
     <div class="row justify-content-center mt-4">
         <div class="col-10">
 
-            <div class="row mb-3">
-                <div class="col-xl-6">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-xl-4">
-                            <label class="col-form-label">No. Kakitangan</label>
+            <form id="form1">
+                <div class="row mb-3">
+                    <div class="col-xl-6">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-xl-4">
+                                <label class="col-form-label">No. Kakitangan</label>
+                            </div>
+                            <div class="col-xl-8">
+                                <input type="text"class="form-control border-danger" placeholder="SILA TAIP DISINI" id="no_kakitangan">
+                            </div>
                         </div>
-                        <div class="col-xl-8">
-                            <input type="text"class="form-control border-danger" placeholder="SILA TAIP DISINI">
+                    </div>
+    
+                    <div class="col-xl-6">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-xl-4 text-end">
+                                <label class="col-form-label">Tarikh</label>
+                            </div>
+                            <div class="col-xl-8">
+                                <input class="form-select datetimepicker border-danger" type="date" placeholder="SILA PILIH"
+                                    data-options='{"disableMobile":true}' id="tarikh"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xl-6">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-xl-4 text-end">
-                            <label class="col-form-label">Tarikh</label>
-                        </div>
-                        <div class="col-xl-8">
-                            <input class="form-select datetimepicker border-danger" type="date" placeholder="SILA PILIH"
-                                data-options='{"disableMobile":true}' />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-xl-4">
-                            <label class="col-form-label">Aktiviti</label>
-                        </div>
-                        <div class="col-xl-8">
-                            <input type="text"class="form-control border-danger" placeholder="SILA TAIP DISINI">
+    
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-xl-4">
+                                <label class="col-form-label">Aktiviti</label>
+                            </div>
+                            <div class="col-xl-8">
+                                <input type="text"class="form-control border-danger" placeholder="SILA TAIP DISINI" id="aktiviti">
+                            </div>
                         </div>
                     </div>
+    
                 </div>
-
-            </div>
-
-            <div class="row mt-5">
-                <div class="text-center">
-                    <button class="btn btn-sm btn-danger">Cari
-                        <span data-feather="search"></span>
-                    </button>
-                    <button class="btn btn-sm btn-link">
-                        <span class="refreshbtn" style="color:grey" data-feather="refresh-ccw"></span>
-                    </button>
+    
+                <div class="row mt-5">
+                    <div class="text-center">
+                        <a class="btn btn-sm btn-danger" onclick="filter()">Cari
+                            <span data-feather="search"></span>
+                        </a>
+                        <a class="btn btn-sm btn-link" id="reset">
+                            <span class="refreshbtn" style="color:grey" data-feather="refresh-ccw"></span>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div class="row mt-5">
                 <div class="card mt-5">
@@ -72,14 +74,14 @@
                                             <th class="sort" data-sort="tarikhTindakan">Tarikh Tindakan</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="list">
+                                    <tbody class="list" id="t_normal">
                                         @foreach ($audit as $a)
                                             <tr style="border-bottom:#fff">
                                                 <td class="bil">
                                                     {{ $loop->iteration }}
                                                 </td>
                                                 <td class="kakitangan">
-                                                    {{ $a->pengguna->no_kakitangan }}
+                                                    {{ $a->no_kakitangan }}
                                                 </td>
                                                 <td class="tindakan">
                                                     {{ $a->tindakan }}
@@ -112,4 +114,60 @@
 
         </div>
     </div>
+
+    <script>
+        $("#reset").click(function() {
+            $('#form1').trigger("reset");
+        });
+
+        function filter() {
+            var no_kakitangan = $('#no_kakitangan').val();
+            var tarikh = $('#tarikh').val();
+            var aktiviti = $('#aktiviti').val();
+
+            $.ajax({
+                type: 'get',
+                url: '/audit/filter',
+                data: {
+                    'no_kakitangan': no_kakitangan,
+                    'tarikh': tarikh,
+                    'aktiviti': aktiviti,
+                },
+                success: function(result) {
+                    console.log(result);
+                    $("#t_normal").html("");
+                    let iteration = 1;
+                    result.forEach(e => {
+                        $("#t_normal").append(`
+
+                        <tr style="border-bottom:#fff">
+                            <td class="bil">
+                                ` + iteration + `
+                            </td>
+                            <td class="kakitangan">
+                                ${ e.no_kakitangan }
+                            </td>
+                            <td class="tindakan">
+                                ${ e.tindakan }
+                            </td>
+                            <td class="keterangan">
+                                ${ e.deskripsi }
+                            </td>
+                            <td class="tarikhTindakan">
+                                ${ e.created_at }
+                            </td>
+
+                        </tr>
+                        `);
+
+                        iteration++;
+                    });
+                    // console.log(result);
+                },
+                error: function() {
+                    console.log('error');
+                },
+            });
+        }
+    </script>
 @endsection

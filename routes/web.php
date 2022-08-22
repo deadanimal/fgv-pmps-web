@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('audit', [AuditController::class, 'index'])->name('audit');
+    Route::get('audit/filter', [AuditController::class, 'filter']);
 
     Route::prefix('/pengurusan-pokok-induk')->group(function () {
         Route::get('/pokok/index', [PengurusanPokokIndukController::class, 'pokok'])->name('pi.pokok');
