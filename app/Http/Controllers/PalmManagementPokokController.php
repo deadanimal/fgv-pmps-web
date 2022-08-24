@@ -13,7 +13,7 @@ class PalmManagementPokokController extends Controller
      */
     public function index()
     {
-        //
+        return view('palm_management.pokok.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PalmManagementPokokController extends Controller
      */
     public function create()
     {
-        //
+        return view('palm_management.pokok.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class PalmManagementPokokController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/pengurusan-pokok-induk/pokok');
     }
 
     /**
@@ -56,7 +56,7 @@ class PalmManagementPokokController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('palm_management.pokok.edit');
     }
 
     /**
@@ -68,7 +68,7 @@ class PalmManagementPokokController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('/pengurusan-pokok-induk/pokok');
     }
 
     /**
@@ -79,6 +79,12 @@ class PalmManagementPokokController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/pengurusan-pokok-induk/pokok');
+    }
+
+    // custom
+    public function generate_qr($id)
+    {
+        # code...
     }
 }

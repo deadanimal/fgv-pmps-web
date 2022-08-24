@@ -125,10 +125,10 @@
                                 height="20%;">
                             <div class="ms-1 ">
                                 <p class="text-main mb-0">
-                                    <span class="fw-bold">NAMA :</span> {{Auth::user()->name}}
+                                    <span class="fw-bold">NAMA :</span> {{ Auth::user()->name }}
                                 </p>
                                 <p class="text-main">
-                                    <span class="fw-bold">NO. Kakitangan:</span> {{Auth::user()->no_kakitangan}}
+                                    <span class="fw-bold">NO. Kakitangan:</span> {{ Auth::user()->no_kakitangan }}
                                 </p>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                                     <li
                                         class="nav-item 
                                         {{ Request::is('pengurusan_pengguna/petugas', 'pengurusan_pengguna/daftar', 'pengurusan_pengguna/edit') ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('pp.petugas') }}">
+                                        <a class="nav-link" href="/pengurusan_pengguna/daftar">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
@@ -176,7 +176,7 @@
                                     </li>
                                     <li
                                         class="nav-item {{ Request::is('pengurusan_pengguna/laporan', 'pengurusan_pengguna/maklumat') ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('pp.laporan') }}">
+                                        <a class="nav-link" href="/pengurusan_pengguna/laporan">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
@@ -202,8 +202,8 @@
                                     id="pokok-induk">
                                     <li
                                         class="nav-item 
-                                            {{ Request::is('pengurusan-pokok-induk/pokok/*') ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('pi.pokok') }}">
+                                            {{ Request::is('pengurusan-pokok-induk/pokok/*', 'pengurusan-pokok-induk/pokok') ? 'active' : '' }}">
+                                        <a class="nav-link" href="/pengurusan-pokok-induk/pokok">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
@@ -213,8 +213,8 @@
                                         </a>
                                     </li>
                                     <li
-                                        class="nav-item {{ Request::is('pengurusan-pokok-induk/tandan/*') ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('pi.tandan') }}">
+                                        class="nav-item {{ Request::is('pengurusan-pokok-induk/tandan/*', 'pengurusan-pokok-induk/tandan') ? 'active' : '' }}">
+                                        <a class="nav-link" href="/pengurusan-pokok-induk/tandan">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
@@ -238,22 +238,24 @@
                                 </a>
                                 <ul class="nav collapse false" id="laporan">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link {{ Request::is('laporan/motherpalm/*', 'laporan/motherpalm') ? 'active' : '' }}"
+                                            href="/laporan/motherpalm">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
                                                 </span>
-                                                <span class="nav-link-text ps-1">Pokok</span>
+                                                <span class="nav-link-text ps-1">Motherpalm</span>
                                             </div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link {{ Request::is('laporan/fatherpalm/*', 'laporan/fatherpalm') ? 'active' : '' }}"
+                                            href="/laporan/fatherpalm">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
                                                 </span>
-                                                <span class="nav-link-text ps-1">Tandan</span>
+                                                <span class="nav-link-text ps-1">Fatherpalm</span>
                                             </div>
                                         </a>
                                     </li>
@@ -287,22 +289,24 @@
                                 </a>
                                 <ul class="nav collapse false" id="konfigurasi-sistem">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link {{ Request::is('konfigurasi-sistem/kerosakan/*', 'konfigurasi-sistem/kerosakan') ? 'active' : '' }}"
+                                            href="/konfigurasi-sistem/kerosakan">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
                                                 </span>
-                                                <span class="nav-link-text ps-1">Pokok</span>
+                                                <span class="nav-link-text ps-1">Kerosakan</span>
                                             </div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link {{ Request::is('konfigurasi-sistem/matlamat-bulanan-tahunan/*', 'konfigurasi-sistem/matlamat-bulanan-tahunan') ? 'active' : '' }}"
+                                            href="/konfigurasi-sistem/matlamat-bulanan-tahunan">
                                             <div class="d-flex align-items-center">
                                                 <span class="nav-link-icon">
                                                     <span class="fas fa-folder-open text-main"></span>
                                                 </span>
-                                                <span class="nav-link-text ps-1">Tandan</span>
+                                                <span class="nav-link-text ps-1">Matlamat Bulanan / Tahunan</span>
                                             </div>
                                         </a>
                                     </li>

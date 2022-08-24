@@ -2,8 +2,14 @@
 
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PalmManagementPokokController;
+use App\Http\Controllers\PalmManagementTandanController;
 use App\Http\Controllers\PengurusanPenggunaController;
 use App\Http\Controllers\PengurusanPokokIndukController;
+use App\Http\Controllers\ReportingFatherpalmController;
+use App\Http\Controllers\ReportingMotherpalmController;
+use App\Http\Controllers\SCKerosakanController;
+use App\Http\Controllers\SCMatlamatBulananTahunanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,18 +46,22 @@ Route::middleware('auth')->group(function () {
 
     });
 
+    Route::prefix('/pengurusan-pokok-induk')->group(function(){
+        Route::resource('pokok', PalmManagementPokokController::class);
+        Route::resource('tandan', PalmManagementTandanController::class);
+    });
+
+    Route::prefix('/laporan')->group(function(){
+        Route::resource('motherpalm', ReportingMotherpalmController::class);
+        Route::resource('fatherpalm', ReportingFatherpalmController::class);
+    });
+
     Route::get('audit', [AuditController::class, 'index'])->name('audit');
     Route::get('audit/filter', [AuditController::class, 'filter']);
 
-    Route::prefix('/pengurusan-pokok-induk')->group(function () {
-        Route::get('/pokok/index', [PengurusanPokokIndukController::class, 'pokok'])->name('pi.pokok');
-        Route::get('/pokok/daftar', [PengurusanPokokIndukController::class, 'daftarPokok'])->name('pi.p.daftar');
-        Route::get('/pokok/edit', [PengurusanPokokIndukController::class, 'editPokok'])->name('pi.p.edit');
-
-        Route::get('/tandan/index', [PengurusanPokokIndukController::class, 'tandan'])->name('pi.tandan');
-        Route::get('/tandan/daftar', [PengurusanPokokIndukController::class, 'daftarTandan'])->name('pi.t.daftar');
-        Route::get('/tandan/muat-naik-dokumen', [PengurusanPokokIndukController::class, 'MuatNaikDokumenTandan'])->name('pi.t.muat');
-
+    Route::prefix('/konfigurasi-sistem')->group(function(){
+        Route::resource('kerosakan', SCKerosakanController::class);
+        Route::resource('matlamat-bulanan-tahunan', SCMatlamatBulananTahunanController::class);
     });
 
 });

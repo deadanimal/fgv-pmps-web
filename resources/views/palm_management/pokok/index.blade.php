@@ -70,7 +70,7 @@
             </div>
 
             <div class="text-end mb-3 mt-5">
-                <a href="{{ route('pi.p.daftar') }}" class="btn btn-danger">Daftar
+                <a href="/pengurusan-pokok-induk/pokok/create" class="btn btn-danger">Daftar
                     <span class="text-white" data-feather="plus-circle"></span>
                 </a>
             </div>
@@ -103,7 +103,7 @@
                                                     <button class=" btn btn-sm btn-danger">
                                                         <span data-feather="trash-2" style="width:15px;"></span>
                                                     </button>
-                                                    <a href="{{ route('pi.p.edit') }}" class="ms-2 btn btn-sm btn-danger">
+                                                    <a href="" class="ms-2 btn btn-sm btn-danger">
                                                         <span data-feather="edit" style="width:15px;"></span>
                                                     </a>
                                                 </td>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PalmManagementTandanController extends Controller
+class MotherPalmBaggingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PalmManagementTandanController extends Controller
      */
     public function index()
     {
-        return view('palm_management.tandan.index');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class PalmManagementTandanController extends Controller
      */
     public function create()
     {
-        return view('palm_management.tandan.create');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class PalmManagementTandanController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('/pengurusan-pokok-induk/tandan');
+        //
     }
 
     /**
@@ -56,7 +56,7 @@ class PalmManagementTandanController extends Controller
      */
     public function edit($id)
     {
-        return view('palm_management.tandan.edit');
+        //
     }
 
     /**
@@ -68,7 +68,7 @@ class PalmManagementTandanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('/pengurusan-pokok-induk/tandan');
+        //
     }
 
     /**
@@ -79,12 +79,6 @@ class PalmManagementTandanController extends Controller
      */
     public function destroy($id)
     {
-        return redirect('/pengurusan-pokok-induk/tandan');
-    }
-
-    // custom
-    public function generate_qr($id)
-    {
-        # code...
+        //
     }
 }
